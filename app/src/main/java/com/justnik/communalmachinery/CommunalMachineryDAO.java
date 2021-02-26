@@ -12,6 +12,9 @@ public interface CommunalMachineryDAO {
     @Query("SELECT * FROM CommunalMachinery")
     List<CommunalMachinery> getAll();
 
+    @Query("SELECT * FROM CommunalMachinery WHERE :typeOfMachineID = typeOfMachineID")
+    List<CommunalMachinery> getMachineByID(int typeOfMachineID);
+
     @Insert
     void insertAll(CommunalMachinery... communalMachineries);
 
