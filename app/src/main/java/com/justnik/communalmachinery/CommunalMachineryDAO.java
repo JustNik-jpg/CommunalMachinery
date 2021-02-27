@@ -16,6 +16,9 @@ public interface CommunalMachineryDAO {
     List<CommunalMachinery> getMachineByID(int typeOfMachineID);
 
     @Insert
+    void add(CommunalMachinery communalMachinery);
+
+    @Insert
     void insertAll(CommunalMachinery... communalMachineries);
 
     @Delete
