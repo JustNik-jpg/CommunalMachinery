@@ -10,15 +10,16 @@ public class CommunalMachinery {
     @PrimaryKey(autoGenerate = true)
     public int typeOfMachineID;
 
+    public String name;
     public int price;
     public String forEach;
     public String photoLink;
     public String contactNumber;
 
 
-    public CommunalMachinery(int typeOfMachineID, int price, String forEach, String photoLink,
+    public CommunalMachinery(String name,int price, String forEach, String photoLink,
                              String contactNumber){
-        this.typeOfMachineID = typeOfMachineID;
+        this.name = name;
         this.price = price;
         this.forEach = forEach;
         this.photoLink = photoLink;
@@ -30,7 +31,7 @@ public class CommunalMachinery {
     @NonNull
     @Override
     public String toString() {
-        return typeOfMachineID + " " + price + " " +
+        return typeOfMachineID+" "+ name + " " + price + " " +
                 forEach + " " + photoLink + " " + contactNumber;
     }
 }

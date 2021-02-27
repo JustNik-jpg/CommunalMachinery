@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Communal Machinery</string>
+    <string name="button_text">Детальніше...</string>
+    <string name="mark_price_text">грн/год</string>
 </resources>
