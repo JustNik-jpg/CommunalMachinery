@@ -10,9 +10,11 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 public class Ordering extends Fragment {
-
+    NavController navController;
     EditText t_name;
     EditText t_2name;
     EditText t_phone;
@@ -23,6 +25,7 @@ public class Ordering extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
         View v = inflater.inflate(R.layout.ordering_fragment,container,false);
+        navController = NavHostFragment.findNavController(this);
         init(v);
         return v;
     }

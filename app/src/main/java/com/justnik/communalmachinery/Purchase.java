@@ -13,14 +13,18 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 public class Purchase extends Fragment {
+  NavController navController;
     Button btPurchase;
     Button btCall;
     ImageView image;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
         View v = inflater.inflate(R.layout.purchase_fragment,container,false);
+        navController = NavHostFragment.findNavController(this);
         init(v);
         return v;
     }
@@ -31,7 +35,7 @@ public class Purchase extends Fragment {
 
         btPurchase.setOnClickListener(s -> {
                     Log.d("test","work");
-                    getFragmentManager().beginTransaction().replace(R.id.container,new Ordering()).commit();
+                    navController.navigate(R.id.ordering);
                 }
         );
         btCall.setOnClickListener(s -> {

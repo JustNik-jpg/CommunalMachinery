@@ -5,4 +5,6 @@
     <string name="second_name">Фамілія</string>
     <string name="num_phone">Номер телефону</string>
     <string name="email">Почта</string>
+    <string name="button_text">Детальніше...</string>
+    <string name="mark_price_text">грн/год</string>
 </resources>
