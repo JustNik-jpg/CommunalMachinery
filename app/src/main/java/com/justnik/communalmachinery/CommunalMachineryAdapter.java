@@ -1,5 +1,6 @@
 package com.justnik.communalmachinery;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +11,12 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Delete;
 
 
 import java.util.List;
+
+import static androidx.core.content.ContextCompat.startActivity;
 
 public class CommunalMachineryAdapter extends RecyclerView.Adapter<CommunalMachineryAdapter.MachineViewHolder> {
 
@@ -39,7 +43,7 @@ public class CommunalMachineryAdapter extends RecyclerView.Adapter<CommunalMachi
         holder.nameMachine.setText(machineList.get(position).name);
         holder.price.setText(String.valueOf(machineList.get(position).price));
         holder.contact.setText(machineList.get(position).contactNumber);
-        holder.photoMachine.setImageResource(R.drawable.traktor);
+        holder.photoMachine.setImageResource(machineList.get(position).photoLink);
         holder.itemView.setOnClickListener(v -> onClickListener.onMachineClick(machineList.get(position)));
     }
 

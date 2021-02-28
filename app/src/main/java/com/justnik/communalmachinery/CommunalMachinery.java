@@ -13,18 +13,21 @@ public class CommunalMachinery {
     public String name;
     public int price;
     public String forEach;
-    public String photoLink;
+    public int photoLink;
     public String contactNumber;
+    public String technicalChar;
+    public String owner;
 
 
-    public CommunalMachinery(String name,int price, String forEach, String photoLink,
-                             String contactNumber){
+    public CommunalMachinery(String name,int price, String forEach, int photoLink,
+                             String contactNumber,String owner,String technicalChar){
         this.name = name;
         this.price = price;
         this.forEach = forEach;
         this.photoLink = photoLink;
         this.contactNumber = contactNumber;
-
+        this.technicalChar = technicalChar;
+        this.owner = owner;
     }
 
 

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,14 +32,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         instance = this;
 
-        database = Room.databaseBuilder(this, ComMachDB.class, "database").build();
+        database = Room.databaseBuilder(this, ComMachDB.class, "database").fallbackToDestructiveMigration().build();
         machineryDAO = database.CommunalMachineryDAO();
 
         /* If you want insert some data please uncomment this rows and change objects */
+        Resources res = getResources();
 
-        CommunalMachinery communalMachinery1 = new CommunalMachinery("Tracktor",1,  "perHour", "photo1.png", "+380685487510");
-        CommunalMachinery communalMachinery2 = new CommunalMachinery("Excavator",2,  "perHour", "photo2.png", "+380451254785");
-        CommunalMachinery communalMachinery3 = new CommunalMachinery("Shovel",3,  "perHour", "photo3.png", "+380574813559");
+        CommunalMachinery communalMachinery1 = new CommunalMachinery("Tracktor",1,  "perHour", R.drawable.traktor, "+380685487510", " ОКП \"ІВАНО-ФРАНКІВСЬКЕ ОБТІ\"",res.getString(R.string.technical_char_first));
+        CommunalMachinery communalMachinery2 = new CommunalMachinery("Excavator",2,  "perHour", R.drawable.excavator, "+380451254785","\"Століт\"",res.getString(R.string.technical_char_second));
+        CommunalMachinery communalMachinery3 = new CommunalMachinery("Shovel",3,  "perHour", R.drawable.shovel, "+380574813559","ТзОВ \"Стальконструкція ІФ\"",res.getString(R.string.technical_char_third));
 
         new InsertAsyncTask().execute(communalMachinery1);
         new InsertAsyncTask().execute(communalMachinery2);
