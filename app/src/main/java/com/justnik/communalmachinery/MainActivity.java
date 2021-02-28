@@ -53,20 +53,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.miRefresh:
-
-                break;
-            case R.id.miInitialize :
-
-
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     private class RowCountTask extends AsyncTask<Void,Void,Integer>{
 
         @Override

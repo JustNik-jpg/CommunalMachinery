@@ -7,5 +7,4 @@
     <string name="email">Почта</string>
     <string name="button_text">Замовити...</string>
     <string name="mark_price_text">грн/год</string>
-    <string name="menu_refresh">Оновити</string>
 </resources>
