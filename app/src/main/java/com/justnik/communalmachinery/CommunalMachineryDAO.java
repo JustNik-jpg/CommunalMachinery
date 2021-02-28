@@ -1,9 +1,11 @@
 package com.justnik.communalmachinery;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -15,12 +17,13 @@ public interface CommunalMachineryDAO {
     @Query("SELECT * FROM CommunalMachinery WHERE :typeOfMachineID = typeOfMachineID")
     List<CommunalMachinery> getMachineByID(int typeOfMachineID);
 
-    @Insert
-    void add(CommunalMachinery communalMachinery);
+    @Query("SELECT COUNT(typeOfMachineID) FROM CommunalMachinery")
+    int getRowCount();
 
     @Insert
     void insertAll(CommunalMachinery... communalMachineries);
 
     @Delete
     void delete(CommunalMachinery communalMachinery);
+
 }

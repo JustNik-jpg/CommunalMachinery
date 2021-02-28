@@ -1,44 +1,44 @@
 package com.justnik.communalmachinery;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LiveData;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
-import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
-    public static MainActivity instance;
+    private MainActivity instance;
     private ComMachDB database;
     private CommunalMachineryDAO machineryDAO;
-    public static ArrayList<CommunalMachinery> machineryList;
-    NavController navController;
+    RecyclerView rvListOfMachines;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        NavHostFragment host = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.navFragment);
-        navController = host.getNavController();
-
-        navController.navigate(R.id.home_fragment);
-
         instance = this;
-        database = Room.databaseBuilder(this, ComMachDB.class, "ComMatchDB").build();
 
-        ComMachDB db = MainActivity.getInstance().getDatabase();
-        machineryDAO = db.CommunalMachineryDAO();
+        database = Room.databaseBuilder(this, ComMachDB.class, "database").build();
+        machineryDAO = database.CommunalMachineryDAO();
 
         /* If you want insert some data please uncomment this rows and change objects */
 
-        CommunalMachinery communalMachinery1 = new CommunalMachinery("АВТОБУС МАЗ 251062", 200, "perHour", "https://avtek.ua/storage/product-image/220x155/1555067152_PZxpDn.png", "+380685487510");
-        CommunalMachinery communalMachinery2 = new CommunalMachinery("ТРАКТОР БЕЛАРУС-80.1", 300, "perHour", "https://avtek.ua/storage/product-image/220x155/1529413264_erTp1q.png", "+380451254785");
-        CommunalMachinery communalMachinery3 = new CommunalMachinery("ЭКСКАВАТОР-ПОГРУЗЧИК БАМ-2014", 150, "perHour", "https://avtek.ua/storage/product-image/220x155/1570711191_xSatkP.png", "+380574813559");
+        CommunalMachinery communalMachinery1 = new CommunalMachinery("Tracktor",1,  "perHour", "photo1.png", "+380685487510");
+        CommunalMachinery communalMachinery2 = new CommunalMachinery("Excavator",2,  "perHour", "photo2.png", "+380451254785");
+        CommunalMachinery communalMachinery3 = new CommunalMachinery("Shovel",3,  "perHour", "photo3.png", "+380574813559");
 
         new InsertAsyncTask().execute(communalMachinery1);
         new InsertAsyncTask().execute(communalMachinery2);
@@ -46,38 +46,74 @@ public class MainActivity extends AppCompatActivity {
 
         /* End of insert data */
 
-        new QueryAsyncTask().execute();
+        rvListOfMachines = findViewById(R.id.rvListOfMachines);
+        rvListOfMachines.setLayoutManager(new LinearLayoutManager(this));
+        new GetDataTask().execute();
+
 
     }
 
-    private static MainActivity getInstance() {
-        return instance;
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.miRefresh:
+
+                break;
+            case R.id.miInitialize :
+
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
-    public ComMachDB getDatabase() {
-        return database;
+    private class RowCountTask extends AsyncTask<Void,Void,Integer>{
+
+        @Override
+        protected Integer doInBackground(Void... voids) {
+            return machineryDAO.getRowCount();
+        }
     }
 
-    public static ArrayList<CommunalMachinery> getList(){
-        return machineryList;
-    }
-
+    // Inserting data in db in AsyncTask
     private class InsertAsyncTask extends AsyncTask<CommunalMachinery, Void, Void> {
         CommunalMachinery machinery;
 
         @Override
         protected Void doInBackground(CommunalMachinery... communalMachineries) {
-            machinery = communalMachineries[0];
-            machineryDAO.add(machinery);
+            if (machineryDAO.getRowCount()<3) {
+                machinery = communalMachineries[0];
+                machineryDAO.insertAll(machinery);
+            }
             return null;
         }
     }
 
-    private class QueryAsyncTask extends AsyncTask<Void, Void, Void> {
+    // Async task designed to get data from db amd set it as a source for RecyclerView
+    private class GetDataTask extends AsyncTask<Void, Void, List<CommunalMachinery>> {
         @Override
-        protected Void doInBackground(Void... voids) {
-            machineryList = (ArrayList<CommunalMachinery>) machineryDAO.getAll();
-            return null;
+        protected List<CommunalMachinery> doInBackground(Void... voids) {
+            // Getting data from db in background
+            List<CommunalMachinery> machineryList =  machineryDAO.getAll();
+            Log.d("RecyclerView", "Got all machines "+machineryList);
+
+            return machineryList;
+        }
+
+        @Override
+        protected void onPostExecute(List<CommunalMachinery> list) {
+            super.onPostExecute(list);
+
+            // On post execute set RecyclerView adapter with data from db
+            Log.d("RecyclerView", "Setting list to rv "+list);
+
+            CommunalMachineryAdapter machineryAdapter = new CommunalMachineryAdapter(list, (cm) -> {
+                //TODO: implement second activity call
+                //Intent intent = new Intent();
+                Log.d("Adapter", "Clicked object " + cm);
+            });
+            rvListOfMachines.setAdapter(machineryAdapter);
+
         }
     }
 }
