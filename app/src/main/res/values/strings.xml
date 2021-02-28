@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Communal Machinery</string>
-    <string name="button_text">Детальніше...</string>
-    <string name="mark_price_text">грн/год</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name">Ім\'я</string>
+    <string name="second_name">Фамілія</string>
+    <string name="num_phone">Номер телефону</string>
+    <string name="email">Почта</string>
 </resources>
