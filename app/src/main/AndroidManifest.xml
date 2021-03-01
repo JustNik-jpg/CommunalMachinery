@@ -12,9 +12,11 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <action android:name="anroid.intent.action.Detail"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name ="com.justnik.communalmachinery.Detail"
+            android:label="detail_activity">
         </activity>
     </application>
 

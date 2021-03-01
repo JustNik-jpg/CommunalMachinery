@@ -19,21 +19,34 @@
         android:id="@+id/definition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="опис"
+        android:text="@string/technicalHar"
+        android:layout_marginStart="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.273" />
+        app:layout_constraintTop_toBottomOf="@+id/nameVehicle"
+        app:layout_constraintVertical_bias="0.272" />
 
     <TextView
         android:id="@+id/nameVehicle"
-        android:layout_width="46dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="36dp"
-        android:text="Назва"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:text="@string/name_machine"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.281"
+        app:layout_constraintHorizontal_bias="0.36"
+        app:layout_constraintStart_toEndOf="@+id/image"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nameVehicle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="@string/name_machine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.36"
         app:layout_constraintStart_toEndOf="@+id/image"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,44 +55,79 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:text="+380654645322"
+        android:text="@string/number"
         android:textColor="@color/design_default_color_primary"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.108"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/definition" />
+        app:layout_constraintTop_toBottomOf="@+id/owner" />
 
     <Button
         android:id="@+id/btOrdering"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="71dp"
-        android:text="Замовити"
+        android:text="@string/ordering"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/owner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Власник"
-        app:layout_constraintBottom_toTopOf="@+id/number"
+        android:layout_marginTop="68dp"
+        android:text="@string/owner"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.273"
-        app:layout_constraintStart_toEndOf="@+id/image"
-        app:layout_constraintTop_toBottomOf="@+id/nameVehicle"
-        app:layout_constraintVertical_bias="0.21" />
+        app:layout_constraintHorizontal_bias="0.092"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/definition" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/owner2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="id"
+        android:text="@string/owner"
+        app:layout_constraintBottom_toTopOf="@+id/owner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.092"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image"
+        app:layout_constraintVertical_bias="0.952" />
+
+    <TextView
+        android:id="@+id/idMachine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/id"
         app:layout_constraintBottom_toTopOf="@+id/image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.222"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.64" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/technicalHar"
+        app:layout_constraintBottom_toTopOf="@+id/definition"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image"
+        app:layout_constraintVertical_bias="0.7" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/number"
+        app:layout_constraintBottom_toTopOf="@+id/number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/owner"
+        app:layout_constraintVertical_bias="0.78" />
 </androidx.constraintlayout.widget.ConstraintLayout>

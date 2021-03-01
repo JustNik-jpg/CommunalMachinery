@@ -7,14 +7,14 @@
     <string name="email">Почта</string>
     <string name="button_text">Замовити...</string>
     <string name="mark_price_text">грн/год</string>
-    <string name="technical_char_first">Двигатель - Д-144, Мощность двигателя  (кВт) - 1800, \n Удельный расход топлива, г/кВт.ч. (г/л.с.ч.) - 241(177)</string>\
-    <string name="technical_char_second">тип ходовой части (колесная, гусеничная);\n" +
-                "принцип работы (периодический, непрерывный);\n" +
-                "двигатель (дизельный, электрический);\n" +
-                "вместимость ковша (куб. м);\n" +
-                "максимальная скорость хода (км/ч);</string>
-    <string name="technical_char_third">Эксплуатационная масса\t362000 кг\n" +
-                "Эксплуатационная мощность\t1400 кВт\n" +
-                "Емкость ковша\t22 м3\n" +
-                "Максимальная глубина копания\t8000 мм</string>
+    <string name="technical_char_first">Двигатель - Д-144, Мощность двигателя  (кВт) - 1800, Удельный расход топлива, г/кВт.ч. (г/л.с.ч.) - 241(177)</string>\
+    <string name="technical_char_second">Тип ходовой части (колесная, гусеничная) принцип работы (периодический, непрерывный); двигатель (дизельный, электрический);</string>
+    <string name="technical_char_third">Эксплуатационная масса 362000 кг; Эксплуатационная мощность 1400 кВт; Емкость ковша 22 м3; Максимальная глубина копания \n 8000 мм</string>
+
+    <string name="ordering">Замовити</string>
+    <string name="number">Номер</string>
+    <string name="owner">Власник</string>
+    <string name="technicalHar">Технічні характеристики</string>
+    <string name="name_machine">Назва</string>
+    <string name="id">ІД</string>
 </resources>

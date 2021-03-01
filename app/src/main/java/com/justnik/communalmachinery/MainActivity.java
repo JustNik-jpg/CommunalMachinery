@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         /* If you want insert some data please uncomment this rows and change objects */
         Resources res = getResources();
 
-        CommunalMachinery communalMachinery1 = new CommunalMachinery("Tracktor",1,  "perHour", R.drawable.traktor, "+380685487510", " ОКП \"ІВАНО-ФРАНКІВСЬКЕ ОБТІ\"",res.getString(R.string.technical_char_first));
+        CommunalMachinery communalMachinery1 = new CommunalMachinery("Tractor",1,  "perHour", R.drawable.traktor, "+380685487510", " ОКП \"ІВАНО-ФРАНКІВСЬКЕ ОБТІ\"",res.getString(R.string.technical_char_first));
         CommunalMachinery communalMachinery2 = new CommunalMachinery("Excavator",2,  "perHour", R.drawable.excavator, "+380451254785","\"Століт\"",res.getString(R.string.technical_char_second));
         CommunalMachinery communalMachinery3 = new CommunalMachinery("Shovel",3,  "perHour", R.drawable.shovel, "+380574813559","ТзОВ \"Стальконструкція ІФ\"",res.getString(R.string.technical_char_third));
 
