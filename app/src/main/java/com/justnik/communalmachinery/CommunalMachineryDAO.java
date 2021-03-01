@@ -15,7 +15,7 @@ public interface CommunalMachineryDAO {
     List<CommunalMachinery> getAll();
 
     @Query("SELECT * FROM CommunalMachinery WHERE :typeOfMachineID = typeOfMachineID")
-    List<CommunalMachinery> getMachineByID(int typeOfMachineID);
+    CommunalMachinery getMachineByID(int typeOfMachineID);
 
     @Query("SELECT COUNT(typeOfMachineID) FROM CommunalMachinery")
     int getRowCount();

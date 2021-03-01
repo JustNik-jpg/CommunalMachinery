@@ -5,7 +5,7 @@
     <string name="second_name">Фамілія</string>
     <string name="num_phone">Номер телефону</string>
     <string name="email">Почта</string>
-    <string name="button_text">Замовити...</string>
+    <string name="button_text">Детальніше...</string>
     <string name="mark_price_text">грн/год</string>
     <string name="technical_char_first">Двигатель - Д-144, Мощность двигателя  (кВт) - 1800, Удельный расход топлива, г/кВт.ч. (г/л.с.ч.) - 241(177)</string>\
     <string name="technical_char_second">Тип ходовой части (колесная, гусеничная) принцип работы (периодический, непрерывный); двигатель (дизельный, электрический);</string>

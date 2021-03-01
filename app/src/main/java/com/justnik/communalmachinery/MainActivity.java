@@ -22,7 +22,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private MainActivity instance;
     private ComMachDB database;
-    private CommunalMachineryDAO machineryDAO;
+    static CommunalMachineryDAO machineryDAO;
     RecyclerView rvListOfMachines;
 
 
@@ -95,10 +95,12 @@ public class MainActivity extends AppCompatActivity {
             // On post execute set RecyclerView adapter with data from db
             Log.d("RecyclerView", "Setting list to rv "+list);
 
-            CommunalMachineryAdapter machineryAdapter = new CommunalMachineryAdapter(list, (cm) -> {
+            CommunalMachineryAdapter machineryAdapter = new CommunalMachineryAdapter(list, (position) -> {
                 //TODO: implement second activity call
-                //Intent intent = new Intent();
-                Log.d("Adapter", "Clicked object " + cm);
+                Intent intent = new Intent(getApplicationContext(),Detail.class);
+                intent.putExtra("index",position);
+                startActivity(intent);
+                Log.d("Adapter", "Clicked object " + position);
             });
             rvListOfMachines.setAdapter(machineryAdapter);
 

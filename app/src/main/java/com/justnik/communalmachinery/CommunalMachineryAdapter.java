@@ -21,7 +21,7 @@ import static androidx.core.content.ContextCompat.startActivity;
 
 public class CommunalMachineryAdapter extends RecyclerView.Adapter<CommunalMachineryAdapter.MachineViewHolder> {
 
-    static List<CommunalMachinery> machineList;
+    List<CommunalMachinery> machineList;
     private final OnMachineClickListener onClickListener;
 
     public CommunalMachineryAdapter(List<CommunalMachinery> list, OnMachineClickListener onClickListener) {
@@ -41,14 +41,13 @@ public class CommunalMachineryAdapter extends RecyclerView.Adapter<CommunalMachi
 
     @Override
     public void onBindViewHolder(@NonNull MachineViewHolder holder, int position) {
-        Context context = holder.nameMachine.getContext();
-        Intent intent = new Intent(context,Detail.class);
-        intent.putExtra("index",position);
+
+
         holder.nameMachine.setText(machineList.get(position).name);
         holder.price.setText(String.valueOf(machineList.get(position).price));
         holder.contact.setText(machineList.get(position).contactNumber);
         holder.photoMachine.setImageResource(machineList.get(position).photoLink);
-        holder.itemView.setOnClickListener(event->context.startActivity(intent));
+        holder.itemView.setOnClickListener(v -> onClickListener.onMachineClick(position));
     }
 
     @Override
@@ -80,7 +79,7 @@ public class CommunalMachineryAdapter extends RecyclerView.Adapter<CommunalMachi
     }
 
     interface OnMachineClickListener {
-        void onMachineClick(CommunalMachinery cm);
+        void onMachineClick(int position);
     }
 
 }
